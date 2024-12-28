@@ -1,0 +1,189 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: rgb(249, 250, 251);
+    color: rgb(17, 24, 39);
+    line-height: 1.5;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(to right, #1e3a8a, #1e40af, #1d4ed8);
+    color: white;
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.header-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+}
+
+/* Container and Grid */
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Column */
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Score Card */
+.score-card {
+    text-align: center;
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgb(30, 64, 175);
+    margin-bottom: 0.5rem;
+}
+
+.score-status {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+/* Feedback */
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feedback-item {
+    padding: 1rem;
+    background-color: rgb(249, 250, 251);
+    border-radius: 0.5rem;
+}
+
+.feedback-item h3 {
+    color: rgb(30, 64, 175);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Skills Section */
+.skills-section {
+    margin-bottom: 1.5rem;
+}
+
+.skills-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.section-header h3 {
+    font-weight: 600;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.skill-tag.extracted {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+.skill-tag.missing {
+    background-color: #fed7d7;
+    color: #742a2a;
+}
+
+/* Metrics */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.metric-item {
+    padding: 1rem;
+    background-color: rgb(249, 250, 251);
+    border-radius: 0.5rem;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.metric-value {
+    font-size: 1.125rem;
+}
+
+/* Colors */
+.text-green {
+    color: rgb(22, 163, 74);
+}
+
+.text-red {
+    color: rgb(220, 38, 38);
+}
+
+.text-blue {
+    color: rgb(30, 64, 175);
+}

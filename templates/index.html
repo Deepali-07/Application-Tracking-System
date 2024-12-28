@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMatch ATS</title>
+    <link rel="stylesheet" type = "text/css" href=" {{ url_for ('static', filename = 'index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="{{ url_for('static' , filename = 'assets/Codegnan Destination New Logo.png') }}" alt="ATS Checker Logo" class="logo-image">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="https://codegnan.com/">About Us</a></li>
+                    <li><a href="#">CV Score</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!--<div class="container hero-container">-->
+            <div class="hero-text">
+                <h1 class="animate-text">Land Your Dream Job</h1>
+                <p class="animate-text">
+                    Transform the job application process with our AI-powered ATS. Upload your resume, analyze job descriptions, and optimize your chances of success.
+                </p>
+                <a href="{{ url_for('upload') }}" class="btn-get-started">Get Your CV Score</a>
+            </div>
+            <!--<div class="hero-image">
+                <img src="hero-image.svg" alt="AI-powered ATS" />
+            </div>-->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="animate-text">What Makes Us Unique?</h2>
+            <div class="features-grid">
+                <div class="feature animate-fade">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Seamless Resume Upload</h3>
+                    <p>Upload your resume in PDF or Word format with ease.</p>
+                </div>
+                <div class="feature animate-fade">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Our intelligent algorithms analyze and score compatibility with job descriptions.</p>
+                </div>
+                <div class="feature animate-fade">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Actionable Recommendations</h3>
+                    <p>Get expert tips to refine your resume and improve your chances.</p>
+                </div>
+                <div class="feature animate-fade">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Success Tracking</h3>
+                    <p>Monitor your progress and make informed decisions for your career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="animate-text">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step animate-fade">
+                    <span class="step-number">1</span>
+                    <h3>Upload Your Resume</h3>
+                    <p>Quickly upload your resume in a supported format.</p>
+                </div>
+                <div class="step animate-fade">
+                    <span class="step-number">2</span>
+                    <h3>Analyze Job Description</h3>
+                    <p>Paste the job description to let the AI analyze it.</p>
+                </div>
+                <div class="step animate-fade">
+                    <span class="step-number">3</span>
+                    <h3>Get AI-Powered Results</h3>
+                    <p>Receive matching scores and actionable recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer">
+            <p>&copy; 2024 Codegnan Destination. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="https://www.facebook.com/codegnan/"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/codegnan"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/codegnan/?hl=en"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/@Codegnan/"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://t.me/codegnan"><i class="fab fa-telegram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

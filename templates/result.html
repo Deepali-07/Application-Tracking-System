@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Results</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/result.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>Resume Analysis Results</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Column -->
+        <div class="column">
+            <!-- Score Card -->
+            <div class="card score-card">
+                <div class="score-value">{{ score }}</div>
+                <div class="score-status">
+                    {% if score is not none %}
+                        {% if score >= 75 %}
+                            Excellent Match
+                        {% elif score >= 50 %}
+                            Good Match
+                        {% else %}
+                            Needs Improvement
+                        {% endif %}
+                    {% else %}
+                        No Score Available
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="card">
+                <h2>Detailed Feedback</h2>
+                <div class="feedback-container">
+                    {% if feedback_sections %}
+                        <div class="feedback-item">
+                            <h3>Skills Feedback</h3>
+                            <p>{{ feedback_sections["Skills"] }}</p>
+                        </div>
+                        <div class="feedback-item">
+                            <h3>Sections Feedback</h3>
+                            <p>{{ feedback_sections["Sections"] }}</p>
+                        </div>
+                        <div class="feedback-item">
+                            <h3>Formatting Feedback</h3>
+                            <p>{{ feedback_sections["Formatting"] }}</p>
+                        </div>
+                    {% else %}
+                        <p>No feedback available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+            <!-- Skills Analysis -->
+            <div class="card">
+                <h2>Skills Analysis</h2>
+                <div class="skills-container">
+                    <!-- Extracted Skills -->
+                    <div class="skills-section">
+                        <h3>Extracted Skills</h3>
+                        <div>
+                            {% if extracted_skills %}
+                                {% for skill in extracted_skills %}
+                                    <span class="skill-tag extracted">{{ skill }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <p>No extracted skills found.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Missing Skills -->
+                    <div class="skills-section">
+                        <h3>Missing Skills</h3>
+                        <div>
+                            {% if missing_skills %}
+                                {% for skill in missing_skills %}
+                                    <span class="skill-tag missing">{{ skill }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <p>No missing skills identified.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

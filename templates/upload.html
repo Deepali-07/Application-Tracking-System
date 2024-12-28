@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume ATS Analyzer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .split {
+            width: 50%;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .left {
+            left: 0;
+            background: linear-gradient(135deg, #00032c, #061d83, #083fa5);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right {
+            right: 0;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .upload-container {
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed #061d83;
+            padding: 40px;
+            border-radius: 10px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #061d83;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #061d83;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0a2db8;
+            transform: translateY(-2px);
+        }
+
+        .file-name {
+            margin-top: 15px;
+            color: #061d83;
+            font-size: 0.9rem;
+        }
+
+        #responseMessage {
+            margin-top: 15px;
+            color: #ef4444;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="split left">
+        <div class="content">
+            <h1>AI-Powered Resume Analysis</h1>
+            <p>Get instant feedback on your resume with our advanced ATS analysis system. Upload your resume and let our AI provide detailed insights and improvement suggestions.</p>
+        </div>
+    </div>
+    <div class="split right">
+        <div class="upload-container">
+            <form id="uploadForm" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+                <div class="upload-area" onclick="document.getElementById('resume').click()">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <p class="upload-text">Click or drag your resume here</p>
+                    <p class="upload-text">(PDF format only)</p>
+                    <input type="file" id="resume" name="resume" class="file-input" accept=".pdf" onchange="updateFileName(this)">
+                    <div class="file-name" id="fileName"></div>
+                </div>
+                <button type="submit" class="submit-btn">Analyze Resume</button>
+            </form>
+            <div id="responseMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            const fileName = document.getElementById('fileName');
+            const responseMessage = document.getElementById('responseMessage');
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                if (file.name.toLowerCase().endsWith('.pdf')) {
+                    fileName.textContent = file.name;
+                    responseMessage.textContent = '';
+                } else {
+                    fileName.textContent = '';
+                    responseMessage.textContent = 'Please upload a PDF file only';
+                    input.value = '';
+                }
+            }
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            const file = document.getElementById('resume').files[0];
+            const responseMessage = document.getElementById('responseMessage');
+            
+            if (!file) {
+                event.preventDefault();
+                responseMessage.textContent = 'Please select a file to upload';
+                return;
+            }
+            
+            responseMessage.style.color = '#061d83';
+            responseMessage.textContent = 'Analyzing your resume...';
+        });
+    </script>
+</body>
+</html>
